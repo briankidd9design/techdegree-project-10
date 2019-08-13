@@ -42,6 +42,12 @@ class Courses extends Component {
                 {/* The map() method creates a new array with the results of calling a 
                 function for every array element. In this case it creates and array of the courses
                 and the indexes associated with those courses*/}
+
+                {/* key={course.id} Keys help React identify which items have changed, are added, or
+                 are removed. Keys should be given to the elements inside the array to give the 
+                 elements a stable identity: More info:
+                 https://reactjs.org/docs/lists-and-keys.html#keys */}
+
                 {this.state.courses.map((course) => (
                     <div className="grid-33" key={course.id}>
                     {console.log ("This is the index of the course"+ index)}
