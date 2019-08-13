@@ -44,10 +44,11 @@ render() {
           </a>
         </header>
           <div>
-          {this.state.courses.map((course) => (
+          {this.state.courses.map((course, index) => (
                     <div>
-                       <ul>
-                            <li>{course.title}</li>
+                       <ul key={course.id}>
+                          {/* <li key={course.id}> {course.id} </li> */}
+                          <li>{course.title} </li>
                       </ul>
                    </div>
                   
