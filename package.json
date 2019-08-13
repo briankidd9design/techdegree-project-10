@@ -1,0 +1,24 @@
+{
+  "name": "full-stack-app",
+  "version": "1.0.0",
+  "description": "Full Stack App with React and a REST API",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "yarn": "^1.17.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briankidd9design/techdegree-project-10.git"
+  },
+  "author": "Brian David Kidd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/briankidd9design/techdegree-project-10/issues"
+  },
+  "homepage": "https://github.com/briankidd9design/techdegree-project-10#readme"
+}
