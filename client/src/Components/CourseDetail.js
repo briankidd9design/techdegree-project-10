@@ -36,7 +36,7 @@ class CourseDetail extends Component {
                 });
             }).catch(error => {
              
-                console.log('Oops! We have ran into an error', error);
+                console.log('Error', error);
             })
     }
 
