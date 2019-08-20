@@ -109,7 +109,7 @@ class CourseDetail extends Component {
                     <div className='bounds course--detail'>
                         <div className='grid-66'>
                             <div className='course--header'>
-                                <h4 className='course-label'>Course</h4>
+                                {/* <h4 className='course-label'>Course</h4> */}
                               
                     </div>
 
