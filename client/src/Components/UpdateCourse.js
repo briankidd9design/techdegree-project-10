@@ -66,6 +66,16 @@ class UpdateCourse extends Component {
                     materialsNeeded: this.state.materialsNeeded
 
                 }
+            }). then(() => {
+                this.setState({
+                  userId: "",
+                  id: "",
+                  title: "",
+                  description: "",
+                  estimatedTime: "",
+                  materialsNeeded: "",
+                  //validationErrors: ""
+                });
             // send user to the right course
             }).then(res => {
                 this.props.history.push('/courses/' + this.props.match.params.id);
@@ -113,7 +123,7 @@ class UpdateCourse extends Component {
                                         type='text'
                                         className='input-title course--title--input'
                                         placeholder='Course title'
-                                        value={title}
+                                        defaultValue={title}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>

@@ -22,7 +22,8 @@ import Header from './Components/Header';
 import UserSignOut from './Components/UserSignOut';
 import PrivateRoute from './Components/PrivateRoute';
 import Errors from './Components/Errors';
-
+import NotFound from './Components/NotFound';
+import Forbidden from './Components/Forbidden';
 class App extends Component {
 
 constructor() {
@@ -91,7 +92,12 @@ handleSignOut = () => {
               <PrivateRoute exact path='/courses/:id/update' component={UpdateCourse} />
               <Route exact path='/signup' render={() => <UserSignUp signIn={this.handleSignIn} />} />
               <Route exact path='/signout' component={UserSignOut} />
-              <Route path="/error" component={Errors} />
+              
+
+                  {/*Route for errors*/}
+                  <Route exact path="/error" component = {Errors} />
+                <Route exact path='/notfound' component = {NotFound} />
+                <Route exact path='/forbidden' component = {Forbidden} />
             </Switch>
           </div>
         </BrowserRouter>
@@ -101,3 +107,4 @@ handleSignOut = () => {
 }
 
 export default App;
+

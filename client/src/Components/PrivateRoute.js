@@ -11,7 +11,7 @@ function PrivateRoute({ component: Component, ...rest }) {
             render={props =>
                 localStorage.getItem("Email")
                     ? (<Component {...props} />)
-                    : (alert("You must log in"),
+                    : (alert("You must log in to see this page"),
                         <Redirect to={{
                             pathname: "/signin",
                             state: { from: props.location }

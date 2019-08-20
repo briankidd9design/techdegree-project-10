@@ -35,8 +35,12 @@ class CourseDetail extends Component {
                     isLoading: false
                 });
             }).catch(error => {
-             
-                console.log('Error', error);
+
+                  //If there is an error
+                if (error) {
+                //Then take user to the Not Found page
+                this.props.history.push('/notfound');
+          }
             })
     }
 

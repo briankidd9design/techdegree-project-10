@@ -8,7 +8,7 @@ class UserSignIn extends Component {
         // set state (empty strings)
         emailAddress: '',
         password: '',
-        //errorMessage: ''
+        errorMessage: ''
     }
 
     // as the value of input changes, set state value
@@ -68,6 +68,4 @@ class UserSignIn extends Component {
         );
     };
 }
-
-
 export default UserSignIn;
