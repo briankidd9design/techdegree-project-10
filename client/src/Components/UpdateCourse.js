@@ -15,13 +15,17 @@ class UpdateCourse extends Component {
         createdBy: '',
         errorMessage: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
     }
+    componentDidMount() {
+        this.handleCourses();
+      }
 
     // handle changes to user input
     handleCourses = e => {
         // request info
         axios.get('http://localhost:5000/api/courses/' + this.props.match.params.id)
+        
             // when info come backs
             .then(res => {
 
@@ -37,8 +41,9 @@ class UpdateCourse extends Component {
                     estimatedTime: courseInfo.estimatedTime,
                     materialsNeeded: courseInfo.materialsNeeded,
                     errorMessage: '',
-                    firstName: courseInfo.course.firstName,
+                    firstName: courseInfo.firstName,
                     lastName: courseInfo.lastName
+                    
                 })
             })
     };
@@ -64,7 +69,9 @@ class UpdateCourse extends Component {
                     title: this.state.title,
                     description: this.state.description,
                     estimatedTime: this.state.estimatedTime,
-                    materialsNeeded: this.state.materialsNeeded
+                    materialsNeeded: this.state.materialsNeeded,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName
 
                 }
             // send user to the right course
@@ -84,11 +91,10 @@ class UpdateCourse extends Component {
                 }
             })
     }
+    
 
     render() {
-        
-        const courseOwner = `${this.state.firstName} ${this.state.lastName}`;
-        const { title, description, estimatedTime, materialsNeeded, errorMessage } = this.state;
+        const { title, description, estimatedTime, materialsNeeded, errorMessage, firstName, lastName } = this.state;
         return (
             <div className='bounds course--detail'>
                 <h1>Update Course</h1>
@@ -118,7 +124,7 @@ class UpdateCourse extends Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <p>By {courseOwner}</p>
+                                <p>By {`${localStorage.getItem("FirstName")} ${localStorage.getItem("LastName")}`}</p>
                             </div>
                             <div className='course--description'>
                                 <div>
