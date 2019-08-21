@@ -37,10 +37,9 @@ class CourseDetail extends Component {
             }).catch(error => {
 
                   //If there is an error
-                if (error) {
-                //Then take user to the Not Found page
-                this.props.history.push('/notfound');
-          }
+                  if (error.response.status === 400) {
+                    this.props.history.push("/notfound");
+                  } 
             })
     }
 

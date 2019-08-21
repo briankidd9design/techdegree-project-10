@@ -26,6 +26,9 @@ class Courses extends Component {
             .then(res => { this.setState(res.data) })
             .catch(error => {
                 // catch any errors and write message in console
+            //    if (error.response.status === 500) {
+            //         this.props.history.push("/error");
+            //       }
                 console.log('Oops! We have ran into an error', error);
             })
             /*//Log errors

@@ -33,6 +33,9 @@ class UpdateCourse extends Component {
                 const courseInfo = res.data.course;
 
                 // set state to the current course
+                if (courseInfo.userId !== parseInt(localStorage.getItem("UserId"))) {
+                    this.props.history.push("/forbidden");
+                }else{
                 this.setState({
                     userid: courseInfo.userId,
                     id: courseInfo.id,
@@ -43,9 +46,13 @@ class UpdateCourse extends Component {
                     errorMessage: '',
                     firstName: courseInfo.firstName,
                     lastName: courseInfo.lastName
-                    
                 })
-            })
+            }
+            }).catch(error => {
+                if (error.response.status === 400) {
+                    this.props.history.push("/notfound");
+                }
+            })  
     };
 
     handleInputChange = e => {
@@ -88,20 +95,20 @@ class UpdateCourse extends Component {
                     this.setState({
                         errorMessage: error.response.data.message
                     })
-                }
+                } 
             })
     }
     
 
     render() {
-        const { title, description, estimatedTime, materialsNeeded, errorMessage, firstName, lastName } = this.state;
+        const { title, description, estimatedTime, materialsNeeded, errorMessage} = this.state;
         return (
             <div className='bounds course--detail'>
                 <h1>Update Course</h1>
                 <div>
                     {errorMessage ? (
                         <div>
-                            <h2 className='validation--errors--label'>Uh oh!</h2>
+                            <h2 className='validation--errors--label'>Error</h2>
                             <div className='validation-errors'>
                                 <ul>
                                     <li>{errorMessage}</li>
