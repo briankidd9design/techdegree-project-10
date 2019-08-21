@@ -59,14 +59,17 @@ handleSignIn(userInfo, props) {
       }
 
       }).catch(error => {
-        if (error.response.status === 400) {
-            this.setState({
-                errorMessage: error.response.data.message
-            })
-        } else if (error.response.status === 401) {
+        // if (error.response.status === 400) {
+        //     this.setState({
+        //         errorMessage: error.response.data.message
+        //     })
+       // } 
+        if (error.response.status === 401) {
             this.setState({
                 errorMessage: error.response.data.message   
             })
+        }else if (error.response.status === 500) {
+          props.history.push("/error");
         }
     })
 }
@@ -94,8 +97,8 @@ handleSignOut = () => {
               <Route exact path='/signout' component={UserSignOut} />
               
 
-                  {/*Route for errors*/}
-                  <Route exact path="/error" component = {Errors} />
+                {/*Routes for errors*/}
+                <Route exact path="/error" component = {Errors} />
                 <Route exact path='/notfound' component = {NotFound} />
                 <Route exact path='/forbidden' component = {Forbidden} />
             </Switch>
