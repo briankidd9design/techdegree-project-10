@@ -21,9 +21,10 @@ import UpdateCourse from './Components/UpdateCourse';
 import Header from './Components/Header';
 import UserSignOut from './Components/UserSignOut';
 import PrivateRoute from './Components/PrivateRoute';
-import Errors from './Components/Errors';
+import UnhandledError from './Components/UnhandledError';
 import NotFound from './Components/NotFound';
 import Forbidden from './Components/Forbidden';
+
 class App extends Component {
 
 constructor() {
@@ -68,7 +69,6 @@ handleSignIn(userInfo, props) {
             this.setState({
                 errorMessage: error.response.data.message   
             })
-            
         }else if (error.response.status === 500) {
           props.history.push("/error");
         }
@@ -99,9 +99,10 @@ handleSignOut = () => {
               
 
                 {/*Routes for errors*/}
-                <Route exact path="/error" component = {Errors} />
+                <Route exact path="/error" component = {UnhandledError} />
                 <Route exact path='/notfound' component = {NotFound} />
                 <Route exact path='/forbidden' component = {Forbidden} />
+                <Redirect to="/notfound" />
             </Switch>
           </div>
         </BrowserRouter>
