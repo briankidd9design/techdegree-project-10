@@ -64,6 +64,7 @@ class CreateCourse extends Component {
                         <div>
                             <h2 className="validation--errors--label">Errors</h2>
                             <div className="validation-errors">
+                            {/* displays the proper error messge if rquired fields are not filled in */}
                                 <ul>
                                     <li>{errorMessage}</li>
                                 </ul>

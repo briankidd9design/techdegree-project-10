@@ -7,7 +7,7 @@ const Forbidden = () => {
       <div className='bounds'>
       <Link className='button button-secondary' to='/'>Return to List</Link>
         <h1>Forbidden</h1>
-          <p>You are not authorized to access this page. Please sign up.</p>
+          <p>You are not authorized to access this page. Please sign in with the authorized credentials.</p>
       </div>
     </div>
   )

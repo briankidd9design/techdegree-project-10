@@ -49,7 +49,7 @@ router.get('/:id', (req, res, next) => {
 			});
 		} else {
 			const err = new Error('This course does not exist.');
-			err.status = 400;
+			err.status = 404;
 			next(err);
 		}
 	});

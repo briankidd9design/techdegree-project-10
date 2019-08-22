@@ -17,11 +17,11 @@ class UserSignUp extends Component {
     
     handleInputChange = e => {
         e.preventDefault();
-       
+       //set the state to the name entered into the target
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    
+    //sign up method
     handleSignUp = (e) => {
         e.preventDefault();
 
@@ -64,7 +64,7 @@ class UserSignUp extends Component {
     }
 
     render() {
-
+//The data stored in these constant variables can now be placed in the DOM
         const { firstName, lastName, emailAddress, password, errorMessage } = this.state;
 
         return (
@@ -82,7 +82,7 @@ class UserSignUp extends Component {
                                 </div>
                             </div>
                         ) : ''}
-
+                    {/*the event handler for when a user enters in signup info */}
                         <form onSubmit={(e) => this.handleSignUp(e, firstName, lastName, emailAddress, password)}>
                             <div>
                                 <input

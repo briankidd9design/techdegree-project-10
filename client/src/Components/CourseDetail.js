@@ -13,21 +13,21 @@ class CourseDetail extends Component {
         isLoading: true
     };
 
-  
+  //make sure the compoent is mounted before executing the handleCourse method
     componentDidMount() {
         this.handleCourse();
     }
 
-    
+    //gets course details from the api
     handleCourse = () => {
-     
+     //when the data is received
         axios.get('http://localhost:5000/api/courses/' + this.props.match.params.id)
-            
+            //get the requested course data
             .then(res => {
-              
+              //set the class state to the current course
                 const courseInfo = res.data;
                 console.log(courseInfo);
-              
+                 //set the class state to the current course
                 this.setState({
                     courseInfo,
                     courseId: courseInfo.course.id,
@@ -35,23 +35,22 @@ class CourseDetail extends Component {
                     isLoading: false
                 });
             }).catch(error => {
-
-                  //If there is an error
-                  if (error.response.status === 400) {
+                //if the course does cannot be found, return a http 404 error
+                  if (error.response.status === 404) {
                     this.props.history.push("/notfound");
                   } 
             })
     }
 
-
+    //this mehtod deletes a course
     handleDeleteCourse = (e) => {
        
         e.preventDefault();
 
-        
+        //executes deletion request
         axios.delete('http://localhost:5000/api/courses/' + this.props.match.params.id, {
             method: 'DELETE',
-          
+          //user must be authorized to delete the course he or she created
             auth: {
                 username: localStorage.getItem('Email'),
                 password: localStorage.getItem('Password')
@@ -69,11 +68,11 @@ class CourseDetail extends Component {
     }
 
 
-     
+     //cancel 
     handleCancel = e => {
        
         e.preventDefault();
-       
+       //goes back to courses route
         this.props.history.push('/courses');
     }
 
@@ -90,12 +89,12 @@ class CourseDetail extends Component {
                     <div className='actions--bar'>
                         <div className='bounds'>
                             <div className='grid-100'>
-                             
+                             {/* render update and delete buttons only if user is logged in */}
                                 {(localStorage.getItem('IsLoggedIn')) && parseInt(localStorage.getItem('UserId')) === createdBy ? (
                                     <span>
-                                     
+                                    {/* update course */}
                                         <Link className='button' to={'/courses/' + id + '/update'}>Update Course</Link>
-                                     
+                                       {/* delete course */}
                                         <button className='button' onClick={e => this.handleDeleteCourse(e)}>Delete Course</button>
                                     </span>
                                 ) : ("")}
@@ -112,7 +111,7 @@ class CourseDetail extends Component {
                               
                     </div>
 
-              
+              {/* diplays title of the course */}
                     <div className='bounds course--detail'>
                         <div className='grid-66'>
                             <div className='course--header'>
@@ -120,9 +119,9 @@ class CourseDetail extends Component {
                                 <h3 className='course--title'>{title}</h3>
                                 <p>By {User.firstName} {User.lastName}</p>
                                 </div>
-                          
+                          {/* displays course description */}
                                 <div className='course--description'>
-                            
+                            {/* ReactMarkdown is used to display the course description property */}
                                 <ReactMarkdown source={description} />
                                 </div>
                         </div>

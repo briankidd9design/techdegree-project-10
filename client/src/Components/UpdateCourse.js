@@ -49,8 +49,10 @@ class UpdateCourse extends Component {
                 })
             }
             }).catch(error => {
-                if (error.response.status === 400) {
+                if (error.response.status === 404) {
                     this.props.history.push("/notfound");
+                }else if (error.response.status === 500) {
+                    this.props.history.push("/error");
                 }
             })  
     };
@@ -84,7 +86,7 @@ class UpdateCourse extends Component {
             // send user to the right course
             }).then(res => {
                 this.props.history.push('/courses/' + this.props.match.params.id);
-            // validation errors from the API
+            // if there are any errors delivered from the api desplay them to the REACT app
             }).catch(error => {
                 console.log('All credentials are required');
                 if (error.response.status === 400) {
