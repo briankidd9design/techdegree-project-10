@@ -11,6 +11,7 @@ _This application provides a way for users to administer a school database conta
 ## Setup And Installation
 
 * Clone the project to a local directory
+* Navigate to the api directory
 * Run npm install: `npm install`
 * Seed database: `npm run seed`
 * Run npm start: `npm start`
