@@ -15,6 +15,9 @@ _This application provides a way for users to administer a school database conta
 * Run npm install: `npm install`
 * Seed database: `npm run seed`
 * Run npm start: `npm start`
+* Navigate to the client directory
+* Run npm install to install all the necessary dependencies
+* Run npm start
 * Open http://localhost:3000 in the browser
 
 
